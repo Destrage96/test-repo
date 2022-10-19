@@ -1,0 +1,82 @@
+@import "reset";
+@import "mixins";
+@import "variables";
+@import "fonts";
+
+* {
+  font-size: 16px;
+  font-family: $Merriweather, serif;
+}
+
+// Общий контейнер страницы
+.page-container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto 40px;
+}
+
+// Внутренний контейнер
+.inner-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-between(xs, mlg) {
+    padding: 0 34px;
+  }
+  @include respond-below(xs) {
+    padding: 0 20px;
+  }
+}
+#app {
+  height: 100vh;
+  width: 100%;
+  background-color: $gray-light-color;
+}
+.text-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  @include transition(all);
+  &:focus{outline: none;}
+  &:hover{
+    overflow: visible;
+    span{
+      display: inline;
+      opacity: 1;
+    }
+  }
+  span{
+    background-color: $brown-color;
+    color: white;
+    position: absolute;
+    border-radius: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    font-size: 12px;
+    min-width: 100px;
+    padding: 10px 15px;
+    top: -50px;
+    @include transition(all);
+    opacity: 0;
+    &::before{
+      content: "";
+      position: absolute;
+      bottom: -20px ;
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      border:10px solid;
+      border-color: $brown-color transparent transparent transparent;
+    }
+  }
+}
